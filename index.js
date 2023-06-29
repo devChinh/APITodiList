@@ -2,9 +2,10 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
-require('dotenv').config();
+
 
 const routerTodo = require("./routes/todoRouter");
+const port = 8080
 
 const app = express();
 
@@ -24,15 +25,7 @@ app.use(morgan("common"));
 
 app.use("/api/todolist", routerTodo);
 
-app.listen(process.env.PORT, () => {
-  console.log("============= port", process.env.PORT);
+app.listen(port, () => {
+  console.log("============= port", port);
 });
-
-
-//CSS
-// font-weight: bold;
-// }
-// .underline {
-//     text-decoration: underline;
-// }
 
