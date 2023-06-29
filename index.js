@@ -25,7 +25,7 @@ app.use(morgan("common"));
 app.use("/api/todolist", routerTodo);
 
 app.listen(process.env.PORT, () => {
-  console.log("============= port", rocess.env.PORT);
+  console.log("============= port", process.env.PORT);
 });
 
 
