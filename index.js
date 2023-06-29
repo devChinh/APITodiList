@@ -2,11 +2,11 @@ const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require('dotenv').config();
 
 const routerTodo = require("./routes/todoRouter");
 
 const app = express();
-const port = 8080;
 
 const db = require("./config/db");
 db.connect();
@@ -24,7 +24,7 @@ app.use(morgan("common"));
 
 app.use("/api/todolist", routerTodo);
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log("============= port", port);
 });
 
