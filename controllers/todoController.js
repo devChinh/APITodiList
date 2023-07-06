@@ -48,8 +48,14 @@ const todoController = {
     //[DELETE] DELETE TODO
     deleteTodo: async (req, res) => {
         try {
-            const todo = await Todo.findByIdAndDelete(req.params.id)
-            res.status(200).json(" dalete sucess")
+            const todoId = req.params.id;
+            const deletedTodo = await Todo.findByIdAndRemove(todoId);
+
+            if (!deletedTodo) {
+                return res.status(404).json({ error: 'Todo not found' });
+            }
+
+            return res.json({ message: 'Todo deleted successfully' });
         } catch (error) {
             res.status(500).json(error)
         }
